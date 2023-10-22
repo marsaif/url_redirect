@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Url Redirect List</title>
+</head>
+<body>
+    <h2>Url Redirect List</h2>
+
+    <!-- Search Form -->
+    <form method="GET">
+        <input type="text" name="q" placeholder="Search">
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Table -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Job ID</th>
+                <th>URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for url_redirect in url_redirects %}
+            <tr>
+                <td>{{ url_redirect.job_id }}</td>
+                <td>{{ url_redirect.url }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Pagination Links -->
+    <div class="pagination">
+        <span class="step-links">
+            {% if url_redirects.has_previous %}
+                <a href="?page=1">First</a>
+                <a href="?page={{ url_redirects.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            <span class="current-page">
+                Page {{ url_redirects.number }} of {{ url_redirects.paginator.num_pages }}.
+            </span>
+
+            {% if url_redirects.has_next %}
+                <a href="?page={{ url_redirects.next_page_number }}">Next</a>
+                <a href="?page={{ url_redirects.paginator.num_pages }}">Last</a>
+            {% endif %}
+        </span>
+    </div>
+</body>
+</html>

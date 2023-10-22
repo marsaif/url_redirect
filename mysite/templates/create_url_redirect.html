@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Url Redirect</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Create Url Redirect</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.job_id.label_tag }}
+                <input type="text" class="form-control" name="{{ form.job_id.name }}" id="{{ form.job_id.id_for_label }}" value="{{ form.job_id.value }}">
+            </div>
+            <div class="form-group">
+                {{ form.url.label_tag }}
+                <input type="text" class="form-control" name="{{ form.url.name }}" id="{{ form.url.id_for_label }}" value="{{ form.url.value }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+    <!-- Add Bootstrap JS and jQuery if needed -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
